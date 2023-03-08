@@ -1,0 +1,31 @@
+@startuml
+
+skinparam monochrome true
+
+entity "Exercise" as E{
+    * <&key> Exercise_ID : int <<generated>>
+    --
+    * Name : varchar(50)
+    * Muscle : varchar(50)
+    * <&key> Workout_ID : int <<FK>>
+}
+
+
+entity "Set" as S{
+    * <&key> Set_ID : int <<generated>>
+    --
+    * <&key>Exercise : int
+    * Weight : int
+}
+
+entity "Workout" as W{
+    * <&key> Workout_ID : int <<generated>>
+    --
+    * Date : DateTime
+}
+
+W ||--|{ S
+S ||--|{ E
+
+
+@enduml
